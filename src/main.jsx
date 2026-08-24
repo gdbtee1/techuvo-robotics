@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './styles.css';
 import AppShell from './components/AppShell';
 
@@ -11,12 +11,20 @@ const Solutions = lazy(() => import('./pages/Solutions'));
 const Company = lazy(() => import('./pages/Company'));
 
 function Loader() {
-  return <div className="route-loader" role="status" aria-live="polite">Loading Techuvo Robotics…</div>;
+  return (
+    <div
+      className="route-loader"
+      role="status"
+      aria-live="polite"
+    >
+      Loading Techuvo Robotics…
+    </div>
+  );
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <AppShell>
         <Suspense fallback={<Loader />}>
           <Routes>
@@ -28,6 +36,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </Routes>
         </Suspense>
       </AppShell>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

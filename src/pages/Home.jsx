@@ -38,9 +38,17 @@ export default function Home() {
       <section className="hero">
         <div className="heroPoster" />
         {!reduce && (
-          <video autoPlay muted loop playsInline preload="metadata" poster="/social-preview.svg" aria-hidden="true">
-            <source src="/techuvo-robots.webm" type="video/webm" />
-            <source src="/techuvo-robots.mp4" type="video/mp4" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={`${import.meta.env.BASE_URL}social-preview.svg`}
+            aria-hidden="true"
+          >
+            <source src={`${import.meta.env.BASE_URL}techuvo-robots.webm`} type="video/webm" />
+            <source src={`${import.meta.env.BASE_URL}techuvo-robots.mp4`} type="video/mp4" />
           </video>
         )}
         <div className="heroOverlay" />

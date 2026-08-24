@@ -299,3 +299,647 @@ img,video{max-width:100%;display:block}
   html{scroll-behavior:auto}
   *,*:before,*:after{animation:none!important;transition:none!important}
 }
+
+/* =========================================================
+   TECHUVO MOBILE HARDENING
+   Keeps the desktop design intact while preventing overflow,
+   oversized diagrams, and hidden/zero-width content on phones.
+   ========================================================= */
+
+.hero video{
+  z-index:0;
+}
+.heroPoster{
+  z-index:-1;
+}
+.heroOverlay{
+  z-index:1;
+}
+.heroContent,.heroStatus,.heroLabel{
+  z-index:2;
+}
+
+@media(max-width:680px){
+  html,body,#root{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  body{
+    min-width:0;
+  }
+
+  .container{
+    width:calc(100% - 28px);
+    max-width:100%;
+  }
+
+  .navinner{
+    height:68px;
+  }
+
+  .logo{
+    font-size:14px;
+    min-width:0;
+  }
+
+  .mark{
+    flex:0 0 30px;
+  }
+
+  .mobilePanel{
+    top:68px;
+    max-height:calc(100vh - 84px);
+    overflow-y:auto;
+  }
+
+  /* Hero: show the footage clearly on mobile */
+  .hero{
+    min-height:780px;
+    height:auto;
+    align-items:flex-start;
+  }
+
+  .hero video,
+  .heroPoster{
+    width:100%;
+    height:100%;
+    min-height:780px;
+    object-fit:cover;
+    object-position:center center;
+  }
+
+  .heroOverlay{
+    background:linear-gradient(
+      180deg,
+      rgba(247,249,252,.93) 0%,
+      rgba(247,249,252,.80) 48%,
+      rgba(247,249,252,.44) 72%,
+      rgba(247,249,252,.22) 100%
+    );
+  }
+
+  .heroContent{
+    width:100%;
+    max-width:none;
+    padding-top:118px;
+    padding-left:0;
+    padding-right:0;
+    text-align:center;
+  }
+
+  .display{
+    font-size:clamp(39px,11.5vw,50px);
+    line-height:1.01;
+    letter-spacing:-.04em;
+    overflow-wrap:anywhere;
+  }
+
+  .h2{
+    font-size:clamp(32px,9vw,44px);
+    line-height:1.06;
+  }
+
+  .rotate{
+    font-size:clamp(23px,7vw,31px);
+    min-height:38px;
+  }
+
+  .heroContent .lead{
+    max-width:34rem;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .heroContent .actions{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .heroContent .btn{
+    width:100%;
+  }
+
+  .heroStatus{
+    left:14px;
+    right:14px;
+    bottom:54px;
+    width:auto;
+    max-width:none;
+  }
+
+  .heroLabel{
+    left:14px;
+    right:14px;
+    bottom:17px;
+    width:auto;
+  }
+
+  .metricStripLabel{
+    padding-left:4px;
+  }
+
+  .metric{
+    min-width:0;
+    padding:20px 14px;
+  }
+
+  .metric strong{
+    font-size:26px;
+  }
+
+  /* Remove desktop minimum widths/heights that force huge mobile sections */
+  .platformIntroGrid,
+  .integrationGrid,
+  .founderEditorial,
+  .solutionsHeroGrid,
+  .companyHeroGrid,
+  .companyVisionGrid,
+  .founderStoryGrid,
+  .partnershipFormGrid,
+  .module,
+  .solutionModule{
+    width:100%;
+    min-width:0;
+  }
+
+  .platformMap{
+    min-height:auto;
+    height:auto;
+    padding:16px;
+    display:grid;
+    gap:12px;
+    border-radius:24px;
+  }
+
+  .platformMap:after,
+  .platformLines{
+    display:none;
+  }
+
+  .platformCore,
+  .platformNode,
+  .nodeFleet,
+  .nodeMission,
+  .nodeSimulation,
+  .nodeIncident{
+    position:relative !important;
+    inset:auto !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+    width:100% !important;
+  }
+
+  .platformCore{
+    height:auto;
+    min-height:155px;
+    border-radius:22px;
+    order:0;
+  }
+
+  .platformNode{
+    padding:18px;
+  }
+
+  .sectionHeaderSplit{
+    gap:14px;
+    margin-bottom:25px;
+  }
+
+  .controlFrame{
+    border-radius:22px;
+  }
+
+  .controlFrameTop,
+  .controlFrameBottom{
+    width:100%;
+    overflow:hidden;
+  }
+
+  .controlBrand{
+    width:100%;
+  }
+
+  .controlBrand span:last-child{
+    border-left:0;
+    padding-left:0;
+    width:100%;
+  }
+
+  .controlTelemetry{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    width:100%;
+  }
+
+  .controlTelemetry span{
+    display:block;
+    text-align:center;
+    min-width:0;
+  }
+
+  /* Demo becomes a clean vertical app on phones */
+  .demoShell{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    min-width:0;
+    border-radius:20px;
+  }
+
+  .demoShell .sidebar{
+    width:100%;
+    min-width:0;
+  }
+
+  .mapArea{
+    width:100%;
+    min-width:0;
+    min-height:430px;
+    order:2;
+  }
+
+  .demoLeft{
+    order:1;
+  }
+
+  .demoRight{
+    order:3;
+  }
+
+  .commandBar{
+    order:4;
+    width:100%;
+  }
+
+  .structuredOutput{
+    order:5;
+    width:100%;
+  }
+
+  .zone{
+    font-size:8px;
+    padding:7px 8px;
+  }
+
+  .zone.restricted{
+    width:92px !important;
+    height:58px !important;
+  }
+
+  .robot{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+  }
+
+  .missionFloat{
+    left:10px;
+    right:10px;
+    bottom:10px;
+    width:auto;
+  }
+
+  .missionFloatBottom{
+    min-width:0;
+  }
+
+  .missionFloatBottom span{
+    min-width:0;
+  }
+
+  .failureGrid{
+    grid-template-columns:1fr;
+  }
+
+  .robotTelemetryGrid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .demoControls{
+    display:grid;
+    grid-template-columns:1fr 44px 44px;
+  }
+
+  .demoControls .btn{
+    width:100%;
+  }
+
+  /* Flow and solution sections */
+  .autonomyFlow{
+    width:100%;
+  }
+
+  .autonomyNode{
+    min-height:0;
+    padding:19px;
+  }
+
+  .solutionMosaic{
+    gap:15px;
+  }
+
+  .solutionTile{
+    min-height:0;
+  }
+
+  .tileVisual{
+    height:210px !important;
+  }
+
+  .solutionTileCopy{
+    padding:20px;
+  }
+
+  .solutionTileCopy h3{
+    font-size:21px;
+  }
+
+  /* The orbital diagram is converted into a legible mobile stack */
+  .integrationOrbit{
+    min-height:0;
+    height:auto;
+    padding:16px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    border-radius:24px;
+  }
+
+  .orbitRing{
+    display:none;
+  }
+
+  .orbitCore,
+  .orbitBadge,
+  .o1,.o2,.o3,.o4,.o5,.o6{
+    position:relative !important;
+    inset:auto !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+  }
+
+  .orbitCore{
+    width:100%;
+    height:150px;
+    border-radius:20px;
+    grid-column:1/-1;
+  }
+
+  .orbitBadge{
+    width:100%;
+    text-align:center;
+  }
+
+  /* Founder and company */
+  .founderMedia,
+  .founderMediaStage{
+    min-height:0;
+    padding:14px;
+    border-radius:23px;
+  }
+
+  .mediaPlaceholder,
+  .founderVideoPlaceholder{
+    min-height:360px;
+    height:auto;
+    padding:22px;
+  }
+
+  .developmentTimeline{
+    gap:16px;
+  }
+
+  .timelineItem{
+    border-left:2px solid #DCE5EF;
+    padding:0 0 20px 18px;
+  }
+
+  .timelineItem>i{
+    position:absolute;
+    left:-7px;
+    top:23px;
+  }
+
+  .timelineItem>i:after{
+    display:none;
+  }
+
+  /* Platform previews must shrink instead of overflowing */
+  .platformHeroConsole,
+  .modulePreview,
+  .solutionScenario{
+    width:100%;
+    min-width:0;
+    overflow:hidden;
+  }
+
+  .consoleStats{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .consoleStat{
+    padding:12px 9px;
+  }
+
+  .consoleStat strong{
+    font-size:20px;
+  }
+
+  .previewStatsRow,
+  .analyticsCards,
+  .startupTelemetry,
+  .researchControls{
+    grid-template-columns:1fr;
+  }
+
+  .fleetRow{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .batteryCell{
+    grid-template-columns:auto auto 1fr;
+  }
+
+  .missionRoute{
+    grid-template-columns:auto 1fr auto;
+    margin:32px 0;
+  }
+
+  .missionDetailGrid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .workflowPreview{
+    padding:16px 10px;
+  }
+
+  .wfNode{
+    width:min(100%,260px);
+    min-width:0;
+  }
+
+  .wfBranches{
+    grid-template-columns:1fr;
+    gap:10px;
+    width:100%;
+  }
+
+  .wfBranches .wfNode{
+    width:100%;
+    min-width:0;
+  }
+
+  .simToolbar{
+    flex-wrap:wrap;
+  }
+
+  .simMap{
+    min-height:300px;
+  }
+
+  .restrictedSim{
+    left:37%;
+    width:95px;
+  }
+
+  .incidentSummary{
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+
+  .pricingSignal{
+    margin-top:18px;
+  }
+
+  .priceCard{
+    min-height:0;
+  }
+
+  /* Solution previews */
+  .scenarioMetrics{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .scenarioMap{
+    height:300px;
+  }
+
+  .startupRobot{
+    flex-wrap:wrap;
+  }
+
+  .manufacturingScenario{
+    min-height:360px;
+  }
+
+  .researchPlot{
+    height:150px;
+  }
+
+  /* Form/footer */
+  .partnershipIntro{
+    position:static;
+  }
+
+  .partnershipFormCard{
+    width:100%;
+    min-width:0;
+  }
+
+  .footergrid{
+    gap:22px;
+  }
+}
+
+@media(max-width:420px){
+  .container{
+    width:calc(100% - 22px);
+  }
+
+  .hero{
+    min-height:760px;
+  }
+
+  .hero video,
+  .heroPoster{
+    min-height:760px;
+  }
+
+  .heroContent{
+    padding-top:104px;
+  }
+
+  .display{
+    font-size:38px;
+  }
+
+  .h2{
+    font-size:32px;
+  }
+
+  .metrics{
+    grid-template-columns:1fr;
+  }
+
+  .metric{
+    border-right:0 !important;
+    border-bottom:1px solid var(--border);
+  }
+
+  .metric:last-child{
+    border-bottom:0;
+  }
+
+  .integrationOrbit{
+    grid-template-columns:1fr;
+  }
+
+  .orbitCore{
+    grid-column:auto;
+  }
+
+  .robotTelemetryGrid,
+  .missionDetailGrid{
+    grid-template-columns:1fr;
+  }
+
+  .consoleStats{
+    grid-template-columns:1fr;
+  }
+
+  .consoleStat{
+    border-right:0;
+    border-bottom:1px solid var(--border);
+  }
+
+  .consoleStat:last-child{
+    border-bottom:0;
+  }
+
+  .scenarioMetrics{
+    grid-template-columns:1fr;
+  }
+
+  .scenarioMetrics span{
+    border-right:0;
+    border-bottom:1px solid var(--border);
+  }
+
+  .footergrid{
+    grid-template-columns:1fr;
+  }
+
+  .footergrid>div:first-child{
+    grid-column:auto;
+  }
+}
